@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, highest, second_highest;
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+    printf("Enter %d integers: ", n);
+    scanf("%d", &highest);
+    scanf("%d", &second_highest); //initialize highest and second_highest with first two integers
+    if (second_highest > highest) {
+        int temp = highest;
+        highest = second_highest;
+        second_highest = temp; //swap highest and second_highest if second_highest is greater than highest
+    }
+    for (i = 2; i < n; i++) {
+        int num;
+        scanf("%d", &num);
+        if (num > highest) {
+            second_highest = highest;
+            highest = num; //update highest and second_highest if the current integer is larger than highest
+        } else if (num > second_highest) {
+            second_highest = num; //update second_highest if the current integer is larger than second_highest but smaller than highest
+        }
+    }
+    printf("Second highest is %d\n", second_highest);
+    return 0;
+}
